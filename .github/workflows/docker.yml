@@ -64,7 +64,7 @@ jobs:
       - name: Build and Push Eureka Server
         uses: docker/build-push-action@v6
         with:
-          context: ./eureka-server
-          file: ./eureka-server/Dockerfile
+          context: ./eureka-server/eureka-server
+          file: ./eureka-server/eureka-server/Dockerfile
           push: true
           tags: mohammmedshahin/eureka-server:latest
