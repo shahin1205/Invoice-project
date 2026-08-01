@@ -26,6 +26,7 @@ public class JwtService {
         Map<String, Object> claims = new HashMap<>();
         claims.put("role", role);
         return Jwts.builder()
+                .claims(claims)
                 .subject(userDetails.getUsername())
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + jwtExpiration))
