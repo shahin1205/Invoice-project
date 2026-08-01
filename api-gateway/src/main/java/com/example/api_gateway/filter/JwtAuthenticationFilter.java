@@ -43,12 +43,9 @@ public class JwtAuthenticationFilter implements GlobalFilter, Ordered {
                 .getHeaders()
                 .getFirst("Authorization");
 
-
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-
             exchange.getResponse()
                     .setStatusCode(HttpStatus.UNAUTHORIZED);
-
             return exchange.getResponse().setComplete();
         }
 
