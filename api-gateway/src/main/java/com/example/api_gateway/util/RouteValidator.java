@@ -27,28 +27,28 @@ public class RouteValidator {
     private static final List<Permission> PERMISSIONS = List.of(
 
             // Product Service
-            new Permission("POST", "/product/**", List.of("ADMIN")),
-            new Permission("PUT", "/product/**", List.of("ADMIN")),
-            new Permission("DELETE", "/product/**", List.of("ADMIN")),
+            new Permission("POST", "/product/**", List.of("ALL")),
+            new Permission("PUT", "/product/**", List.of("ALL")),
+            new Permission("DELETE", "/product/**", List.of("ALL")),
             new Permission("GET", "/product/**", List.of("ALL")),
 
             // Customer Service
-            new Permission("POST", "/customer/**", List.of("ADMIN")),
-            new Permission("PUT", "/customer/**", List.of("ADMIN", "MANAGER")),
-            new Permission("DELETE", "/customer/**", List.of("ADMIN")),
-            new Permission("GET", "/customer/**", List.of("ADMIN", "USER", "MANAGER")),
+            new Permission("POST", "/customer/**", List.of("ALL")),
+            new Permission("PUT", "/customer/**", List.of("ALL", "ALL")),
+            new Permission("DELETE", "/customer/**", List.of("ALL")),
+            new Permission("GET", "/customer/**", List.of("ALL")),
 
             // Invoice Service
-            new Permission("POST", "/invoice/**", List.of("ADMIN")),
-            new Permission("PUT", "/invoice/**", List.of("ADMIN")),
-            new Permission("DELETE", "/invoice/**", List.of("ADMIN")),
-            new Permission("GET", "/invoice/**", List.of("ADMIN", "USER", "MANAGER")),
+            new Permission("POST", "/invoice/**", List.of("ALL")),
+            new Permission("PUT", "/invoice/**", List.of("ALL")),
+            new Permission("DELETE", "/invoice/**", List.of("ALL")),
+            new Permission("GET", "/invoice/**", List.of("ALL")),
 
             // Payment Service
-            new Permission("POST", "/payment/**", List.of("ADMIN")),
-            new Permission("PUT", "/payment/**", List.of("ADMIN")),
-            new Permission("DELETE", "/payment/**", List.of("ADMIN")),
-            new Permission("GET", "/payment/**", List.of("ADMIN"))
+            new Permission("POST", "/payment/**", List.of("ALL")),
+            new Permission("PUT", "/payment/**", List.of("ALL")),
+            new Permission("DELETE", "/payment/**", List.of("ALL")),
+            new Permission("GET", "/payment/**", List.of("ALL"))
     );
 //    public boolean hasAccess(String path, String role) {
 //
