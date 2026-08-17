@@ -16,4 +16,5 @@ public interface InvoiceRepository extends JpaRepository<Invoice, Long> {
     List<Invoice> findByCustomerId(Long customerId);
 
     List<Invoice> findByStatus(String status);
+
 }

@@ -3,8 +3,12 @@ package com.example.invoice.controller;
 
 import com.example.invoice.dto.InvoiceRequest;
 import com.example.invoice.dto.InvoiceResponse;
+import com.example.invoice.pdf.InvoicePdfService;
 import com.example.invoice.service.InvoiceService;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,9 +18,10 @@ import java.util.List;
 public class InvoiceController {
 
     private final InvoiceService invoiceService;
-
-    public InvoiceController(InvoiceService invoiceService) {
+    private final InvoicePdfService invoicePdfService;
+    public InvoiceController(InvoiceService invoiceService, InvoicePdfService invoicePdfService) {
         this.invoiceService = invoiceService;
+        this.invoicePdfService=invoicePdfService;
     }
 
     @PostMapping("/save")
@@ -59,5 +64,18 @@ public class InvoiceController {
             @PathVariable String invoiceNumber) {
 
         return invoiceService.searchInvoice(invoiceNumber);
+    }
+
+    @GetMapping("/download/{invoiceNumber}")
+    public ResponseEntity<byte[]> downloadInvoice(
+            @PathVariable String invoiceNumber) {
+
+        byte[] pdf = invoicePdfService.generateInvoicePdf(invoiceNumber);
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION,
+                        "attachment; filename=" + invoiceNumber + ".pdf")
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(pdf);
     }
 }
